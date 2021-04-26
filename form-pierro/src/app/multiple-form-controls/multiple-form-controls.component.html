@@ -1,0 +1,55 @@
+<div class="container">
+  <h2>Demo Form: Sku</h2>
+  <form [formGroup]="myForm"
+        (ngSubmit)="onSubmit(myForm.value)"
+        class="jumbotron">
+
+    <div class="form-group">
+      <label for="skuInput">SKU</label>
+      <input type="text"
+            id="skuInput"
+            placeholder="SKU"
+            name="sku"
+            [formControl]="myForm.controls['sku']"
+            class="form-control">
+
+      <label for="priceInput">Price</label>
+      <input type="number"
+            id="priceInput"
+            placeholder="1234"
+            name="price"
+            [formControl]="myForm.controls['price']"
+            class="form-control">
+
+      <label for="webpageInput">Web Page</label>
+      <input type="url"
+            id="webpageInput"
+            placeholder="http://example.com/product1.html"
+            name="webpage"
+            [formControl]="myForm.controls['webpage']"
+            class="form-control">
+    </div>
+
+    <div *ngIf="!myForm.controls['sku'].valid"
+        class="alert alert-danger">SKU is invalid
+    </div>
+
+    <div *ngIf="myForm.controls['sku'].hasError('required')"
+        class="alert alert-danger">SKU is required
+    </div>
+
+    <div *ngIf="!myForm.controls['price'].valid"
+        class="alert alert-danger">Price is invalid
+    </div>
+
+    <div *ngIf="myForm.controls['price'].hasError('required')"
+        class="alert alert-danger">Price is required
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+  </form>
+
+  <div *ngIf="!myForm.valid"
+  class="alert alert-danger">Form is invalid</div>
+</div>
